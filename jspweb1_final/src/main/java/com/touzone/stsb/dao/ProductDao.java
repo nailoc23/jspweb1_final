@@ -1,4 +1,4 @@
-package com.touzone.dao;
+package com.touzone.stsb.dao;
 
 public class ProductDao extends DBManager {
 	

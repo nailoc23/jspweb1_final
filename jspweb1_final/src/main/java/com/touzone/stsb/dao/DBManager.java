@@ -1,4 +1,4 @@
-package com.touzone.dao;
+package com.touzone.stsb.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

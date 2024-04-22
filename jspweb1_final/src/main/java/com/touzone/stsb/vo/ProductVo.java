@@ -1,4 +1,4 @@
-package com.touzone.vo;
+package com.touzone.stsb.vo;
 
 public class ProductVo {
 
