@@ -2,6 +2,8 @@ package com.touzone.stsb.dao;
 
 import java.sql.SQLException;
 
+import com.touzone.stsb.vo.MemberVo;
+
 public class MemberDao extends DBManager {
 	
 	/**
@@ -41,6 +43,34 @@ public class MemberDao extends DBManager {
 			DBClose();
 		}
 		 
+		return result;
+	}
+	
+	public int insertMember(MemberVo membervo) {
+		int result=0; // 삽입결과 1이상: 성공
+		
+		conn = getConnect();
+		
+		try {
+			StringBuffer sb = new StringBuffer();
+			sb.append("INSERT INTO book (memid, name, email, password, phone) \n");
+			sb.append(" VALUES (?, ?, ?, ?, ?)" );
+			String sql = sb.toString();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,  membervo.getMemid());
+			pstmt.setString(2,  membervo.getName());
+			pstmt.setString(3,  membervo.getEmail());
+			
+			pstmt.setString(4,  membervo.getPassword());
+			pstmt.setString(5,  membervo.getPhone());
+			
+			result = pstmt.executeUpdate();
+		}catch(SQLException se) {
+			System.out.println("insertMember Error:");
+		}finally {
+			DBClose();
+		}
+		
 		return result;
 	}
 
