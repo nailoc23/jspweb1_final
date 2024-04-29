@@ -23,7 +23,7 @@ public class MemberDao extends DBManager {
 	 * @param pw
 	 * @return
 	 */
-	public int selectEmpByIdPw(String id, String pw) {
+	public int selectMemberByIdPw(String id, String pw) {
 		
 		int result=0;
 		conn = getConnect();
