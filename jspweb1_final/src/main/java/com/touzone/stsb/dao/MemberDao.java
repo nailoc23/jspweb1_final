@@ -66,7 +66,7 @@ public class MemberDao extends DBManager {
 			
 			result = pstmt.executeUpdate();
 		}catch(SQLException se) {
-			System.out.println("insertMember Error:");
+			System.out.println("insertMember Error:" + se.getMessage());
 		}finally {
 			DBClose();
 		}
