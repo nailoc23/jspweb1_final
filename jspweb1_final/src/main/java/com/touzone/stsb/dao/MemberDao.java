@@ -53,7 +53,7 @@ public class MemberDao extends DBManager {
 		
 		try {
 			StringBuffer sb = new StringBuffer();
-			sb.append("INSERT INTO book (memid, name, email, password, phone) \n");
+			sb.append("INSERT INTO members (memid, name, email, password, phone) \n");
 			sb.append(" VALUES (?, ?, ?, ?, ?)" );
 			String sql = sb.toString();
 			pstmt = conn.prepareStatement(sql);
