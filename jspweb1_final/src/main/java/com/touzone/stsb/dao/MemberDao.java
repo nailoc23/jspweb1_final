@@ -73,5 +73,33 @@ public class MemberDao extends DBManager {
 		
 		return result;
 	}
+	
+	/**
+	 * member 테이블의 status 를 withdraw 로 변경하여 탈퇴 처리함
+	 * @param id
+	 * @return
+	 */
+	public int deleteMember(String id) {
+		
+		int result=0; // 삽입결과 1이상: 성공
+		
+		conn = getConnect();
+		
+		try {
+			StringBuffer sb = new StringBuffer();
+			sb.append("UPDATE members SET status='withdraw' \n");
+			sb.append(" WHERE memid=?" );
+			String sql = sb.toString();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,  id);
+			result = pstmt.executeUpdate();
+		}catch(SQLException se) {
+			System.out.println("deleteMember Error:" + se.getMessage());
+		}finally {
+			DBClose();
+		}
+		
+		return result;
+	}
 
 }
