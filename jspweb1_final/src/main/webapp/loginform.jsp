@@ -114,11 +114,13 @@
                 <input type="password" class="form-control" name="userpw" id="userpw" placeholder="사용자비밀번호를 입력하시오" required>
               </div>
               <div class="text-center mt-4">
-                <button type="button" class="btn btn-primary" id="login">Login</button>
+                <button type="button" class="btn btn-primary" id="login">로그인</button>
+                <button type="button" class="btn btn-primary" id="regform" onclick="location.href='regform.jsp'">회원가입</button>
               </div>
             </form>
           </div>
         </div>
+      </div>
       <div class="container">        
         <p>
           <!-- Example inner page template -->
