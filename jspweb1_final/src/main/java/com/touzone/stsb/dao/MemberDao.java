@@ -75,7 +75,7 @@ public class MemberDao extends DBManager {
 	}
 	
 	/**
-	 * member 테이블의 status 를 withdraw 로 변경하여 탈퇴 처리함
+	 * member 테이블의 status 를 withdrawn 로 변경하여 탈퇴 처리함
 	 * @param id
 	 * @return
 	 */
@@ -87,7 +87,7 @@ public class MemberDao extends DBManager {
 		
 		try {
 			StringBuffer sb = new StringBuffer();
-			sb.append("UPDATE members SET status='withdraw' \n");
+			sb.append("UPDATE members SET status='withdrawn' \n");
 			sb.append(" WHERE memid=?" );
 			String sql = sb.toString();
 			pstmt = conn.prepareStatement(sql);
