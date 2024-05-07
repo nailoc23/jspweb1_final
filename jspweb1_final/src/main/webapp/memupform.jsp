@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>    
-
+    pageEncoding="UTF-8"%>
+<%@ page import="com.touzone.stsb.dao.MemberDao" %>
+<%@ page import="com.touzone.stsb.vo.MemberVo" %> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -92,35 +93,58 @@
 
         <ol>
           <li><a href="index.html">My Page</a></li>
-          <li>로그인</li>
+          <li>회원정보수정</li>
         </ol>
-        <h2>로그인</h2>
+        <h2>회원정보수정</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
 
     <section class="inner-page">
       <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-6">
-            <h2>Login</h2>
-            <form action="loginpro.jsp" method="post" role="form" class="php-email-form">
-              <div class="form-group">
-                <label for="username">사용자 아이디</label>
-                <input type="text" name="userid" class="form-control" id="userid" placeholder="사용자아이디를 입력하시오" required>
-              </div>
-              <div class="form-group mt-3">
-                <label for="password">사용자 비밀번호</label>
-                <input type="password" class="form-control" name="userpw" id="userpw" placeholder="사용자비밀번호를 입력하시오" required>
-              </div>
-              <div class="text-center mt-4">
-                <button type="button" class="btn btn-primary" id="login">로그인</button>
-                <button type="button" class="btn btn-primary" id="regform" onclick="location.href='regform.jsp'">회원가입</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+		  <div class="row justify-content-center">
+		    <div class="col-lg-6">
+		      <h2>회원정보수정</h2>
+			  <%
+		      	String id = (String)session.getAttribute("memid");	
+			  
+			  	MemberDao memberDao = MemberDao.getInstance(); // 선언을 하고
+			    MemberVo membervo = memberDao.selectMemberOneById(id);
+		      %>		      
+		      <form action="regpro.jsp" method="post" role="form" class="php-email-form">
+		        <div class="form-row align-items-center">
+	          		<div class="col-auto">
+	            	<label class="sr-only" for="userid">아이디</label>
+	            	<input type="text" name="userid" class="form-control mb-2" id="userid" value="<%= id %>" readonly="readonly" placeholder="아이디를 입력하세요" required>
+	          		</div>
+		          	
+	        	</div>
+	        	
+		        <div class="form-group">
+		          <label for="name">이름</label>
+		          <input type="text" name="name" class="form-control" id="name"  value="<%= membervo.getName() %>" placeholder="이름을 입력하세요" required>
+		        </div>
+		        <!-- <div class="form-group">
+		          <label for="userpw">비밀번호</label>
+		          <input type="password" class="form-control" name="userpw" id="userpw" placeholder="비밀번호를 입력하세요" required>
+		        </div> -->
+		        <div class="form-group">
+		          <label for="email">이메일</label>
+		          <input type="email" class="form-control" name="email" id="email" value="<%= membervo.getEmail() %>" placeholder="이메일을 입력하세요" required>
+		        </div>
+		        <div class="form-group">
+		          <label for="phone">전화번호</label>
+		          <input type="tel" class="form-control" name="phone" id="phone"  value="<%= membervo.getPhone() %>" placeholder="전화번호를 입력하세요" required>
+		        </div>
+		        <div class="text-center mt-4">
+		          <button type="submit" class="btn btn-primary" id="regmem">수정하기</button>
+		          <button type="button" class="btn btn-primary" id="login" onclick="location.href='loginform.jsp'">로그인</button>
+		        </div>
+		      </form>
+		    </div>
+		  </div>
+		</div>
+
       <div class="container">        
         <p>
           <!-- Example inner page template -->
@@ -228,10 +252,9 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
-  	$('#login').click(function(){
+  	$('#regmem').click(function(){
   		$('.php-email-form').submit();
   	});
   </script>

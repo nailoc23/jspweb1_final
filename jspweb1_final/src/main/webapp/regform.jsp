@@ -46,7 +46,7 @@
   <header id="header" class="fixed-top header-inner-pages">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index.html">MINI COOKIE</a></h1>
+      <h1 class="logo me-auto"><a href="index.jsp">Mini Cookie</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -67,11 +67,11 @@
           </li>
           <li class="dropdown"><a href="#"><span>MyPage</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">회원가입</a></li>              
-              <li><a href="#">로그인</a></li>
+              <li><a href="regform.jsp">회원가입</a></li>              
+              <li><a href="loginform.jsp">로그인</a></li>
               <li><a href="#">ID/PW찾기</a></li>
               <li><a href="#">회원정보수정</a></li>
-              <li><a href="#">회원탈퇴</a></li>
+              <li><a href="withdraw.jsp">회원탈퇴</a></li>
               <li><a href="#">주문목록</a></li>
             </ul>
           </li>
@@ -90,10 +90,10 @@
       <div class="container">
 
         <ol>
-          <li><a href="index.html">Home</a></li>
-          <li>회원가입</li>
+          <li><a href="index.html">My Page</a></li>
+          <li>회원정보수정</li>
         </ol>
-        <h2>회원가입</h2>
+        <h2>회원정보수정</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
@@ -103,6 +103,7 @@
 		  <div class="row justify-content-center">
 		    <div class="col-lg-6">
 		      <h2>회원가입</h2>
+		      
 		      <form action="regpro.jsp" method="post" role="form" class="php-email-form">
 		        <div class="form-row align-items-center">
 	          		<div class="col-auto">
