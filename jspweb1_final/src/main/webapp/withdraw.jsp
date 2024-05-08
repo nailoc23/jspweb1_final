@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.touzone.stsb.dao.MemberDao" %>
+<%@ page import="com.touzone.stsb.vo.MemberVo" %> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -104,15 +106,22 @@
 		    <div class="col-lg-6">
 		      <h2>회원탈퇴</h2>
 		      <%
-		      	String id = (String)session.getAttribute("memid");
+		       	String id = (String)session.getAttribute("memid");
+		        MemberDao memberDao = MemberDao.getInstance(); // 선언을 하고
+			    MemberVo membervo = memberDao.selectMemberOneById(id);
 		      %>
 		      <form action="withdrawpro.jsp" method="post" role="form" class="php-email-form">
 		        <div class="form-row align-items-center">
 	          		<div class="col-auto">
 	            	<label class="sr-only" for="userid">아이디</label>
 	            	<input type="text" name="userid" value="<%=id %>" class="form-control mb-2" id="userid" placeholder="아이디를 입력하세요" readonly="readonly" required>
-	          	</div>	          	
+	          		</div>	          	
 	        	</div>
+	        	
+	        	<div class="form-group">
+		          <label for="name">이름</label>
+		          <input type="text" name="name" class="form-control" id="name"  value="<%= membervo.getName() %>" placeholder="이름을 입력하세요" readonly="readonly" required>
+		        </div>
 	        			        
 		        <div class="form-group">
 		          <label for="userpw">비밀번호</label>
