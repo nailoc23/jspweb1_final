@@ -14,7 +14,7 @@
 <%
 	String memid = request.getParameter("userid");
 	String pw = request.getParameter("userpw");
-	String name = request.getParameter("userpw");
+	String name = request.getParameter("name");
 	String email = request.getParameter("email");
 	String phone = request.getParameter("phone");
 	
