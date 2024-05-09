@@ -59,7 +59,7 @@
           <li><a class="nav-link scrollto" href="#team">Consultant</a></li>
           <li class="dropdown"><a href="#"><span>Customer Center</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">공지사항</a></li>              
+              <li><a href="boardlist.jsp">공지사항</a></li>         
               <li><a href="#">News</a></li>
               <li><a href="#">포토갤러리</a></li>
               <li><a href="#">자료실</a></li>
