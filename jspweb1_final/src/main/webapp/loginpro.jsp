@@ -19,7 +19,7 @@
 	if(cnt>0) { // 아이디 비밀번호 확인
 		System.out.println("아이디 비밀번호 확인 성공");
 		session.setAttribute("memid", id);
-		response.sendRedirect("loginform.jsp");
+		response.sendRedirect("index.jsp");
 	}else{
 		System.out.println("로그인실패");
 		response.sendRedirect("loginform.jsp");
