@@ -70,7 +70,7 @@
               <li><a href="regform.jsp">회원가입</a></li>              
               <li><a href="loginform.jsp">로그인</a></li>
               <li><a href="#">ID/PW찾기</a></li>
-              <li><a href="#">회원정보수정</a></li>
+              <li><a href="memupform.jsp">회원정보수정</a></li>
               <li><a href="withdraw.jsp">회원탈퇴</a></li>
               <li><a href="#">주문목록</a></li>
             </ul>
