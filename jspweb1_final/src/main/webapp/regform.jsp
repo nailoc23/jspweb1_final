@@ -91,9 +91,9 @@
 
         <ol>
           <li><a href="index.html">My Page</a></li>
-          <li>회원정보수정</li>
+          <li>회원가입</li>
         </ol>
-        <h2>회원정보수정</h2>
+        <h2>회원가입</h2>
 
       </div>
     </section><!-- End Breadcrumbs -->
