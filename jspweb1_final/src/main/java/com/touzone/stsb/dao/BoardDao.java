@@ -51,5 +51,35 @@ public class BoardDao extends DBManager {
 				
 		return list;
 	}
+	
+	/**
+	 * 글쓰기 함수
+	 * @param boardVo
+	 * @return int
+	 */
+	public int insertBoard(BoardVo boardVo) {
+		int result = 0;
+		
+		conn = getConnect();
+		
+		// AUTO_INCREMENT 로 들어간 가장 최근의 숫자
+		try {
+			StringBuffer sb = new StringBuffer();
+			sb.append("INSERT INTO boards \n"
+					+ "(num, botype, group_num, name, subject, content, regdate) values \n"
+					+ "(( SELECT MAX(num)+1 FROM BO_SERVICE as num ), 'notice', num, ?, ?, ?,now() )");
+			String sql = sb.toString();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, boardVo.getName());
+			pstmt.setString(2, boardVo.getSubject());
+			pstmt.setString(3, boardVo.getContent());
+			result = pstmt.executeUpdate();
+		}catch(SQLException se) {
+			System.out.println("insertBoard error:");
+		}finally {
+			DBClose();
+		}
+		return result; // 성공하면 1이상값
+	}
 
 }
