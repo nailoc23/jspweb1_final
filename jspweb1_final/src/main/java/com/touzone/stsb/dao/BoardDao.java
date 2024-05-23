@@ -67,7 +67,7 @@ public class BoardDao extends DBManager {
 			StringBuffer sb = new StringBuffer();
 			sb.append("INSERT INTO boards \n"
 					+ "(num, botype, group_num, name, subject, content, regdate) values \n"
-					+ "(( SELECT MAX(num)+1 FROM BO_SERVICE as num ), 'notice', num, ?, ?, ?,now() )");
+					+ "(( SELECT MAX(num)+1 FROM boards as num ), 'notice', num, ?, ?, ?,now() )");
 			String sql = sb.toString();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, boardVo.getName());
@@ -80,6 +80,39 @@ public class BoardDao extends DBManager {
 			DBClose();
 		}
 		return result; // 성공하면 1이상값
+	}
+	
+	/**
+	 * 게시물을 번호로 읽는 함수
+	 */
+	public BoardVo selectBoardById(int num) {
+		BoardVo result = new BoardVo();
+		
+		conn = getConnect();
+		
+		try {
+			String sql = "SELECT * FROM boards WHERE num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			// rs : resultset
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				result.setNum( rs.getInt("num") ); 
+				result.setSubject( rs.getString("subject") );
+				result.setEmail( rs.getString("email"));
+				result.setName( rs.getString("name"));
+				result.setContent( rs.getString("content"));
+				result.setRegdate( rs.getString("regdate"));
+				result.setHit( rs.getInt("hit"));
+			}
+		}catch(SQLException se) {
+			System.out.println("selectBookById Error:");
+		}finally { // 이게 빠지면 첫번째 디비접속성공 그다음은 에러가 난다
+			DBClose();
+		}
+		
+		return result;
+		
 	}
 
 }
