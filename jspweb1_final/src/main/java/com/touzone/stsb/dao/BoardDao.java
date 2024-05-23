@@ -75,7 +75,7 @@ public class BoardDao extends DBManager {
 			pstmt.setString(3, boardVo.getContent());
 			result = pstmt.executeUpdate();
 		}catch(SQLException se) {
-			System.out.println("insertBoard error:");
+			System.out.println("insertBoard error:" + se.getMessage());
 		}finally {
 			DBClose();
 		}
