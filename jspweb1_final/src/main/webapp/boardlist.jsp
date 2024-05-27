@@ -99,37 +99,64 @@
     </section><!-- End Breadcrumbs -->
 
     <section class="inner-page">
-	  <div class="container">
-	    <h2>공지사항 목록</h2>
-	    <div class="table-responsive">
-	      <table class="table table-striped">
-	        <thead>
-	          <tr>
-	            <th>#</th>
-	            <th>제목</th>
-	            <th>작성자</th>
-	            <th>작성일</th>
-	          </tr>
-	        </thead>
-	        <tbody>
-	          <tr>
-	            <td>1</td>
-	            <td><a href="#">게시글 제목 1</a></td>
-	            <td>작성자1</td>
-	            <td>2024-04-30</td>
-	          </tr>
-	          <tr>
-	            <td>2</td>
-	            <td><a href="#">게시글 제목 2</a></td>
-	            <td>작성자2</td>
-	            <td>2024-04-30</td>
-	          </tr>
-	          <!-- 추가적인 게시글 행을 이곳에 추가합니다 -->
-	        </tbody>
-	      </table>
-	    </div>
-	  </div>
-	</section>
+  	<div class="container">
+    <h2>공지사항 목록</h2>
+    
+    <!-- 검색창 -->
+    <div class="input-group mb-3">
+       <input type="text" class="form-control" placeholder="검색어 입력" value="" id="searchWord">
+       <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="searchBtn">검색</button>
+       </div>
+    </div>
+    
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><a href="#">게시글 제목 1</a></td>
+            <td>작성자1</td>
+            <td>2024-04-30</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><a href="#">게시글 제목 2</a></td>
+            <td>작성자2</td>
+            <td>2024-04-30</td>
+          </tr>
+          <!-- 추가적인 게시글 행을 이곳에 추가합니다 -->
+        </tbody>
+      </table>
+    </div>
+    
+	    <div class="container mt-3">
+		  <div class="input-group mb-3">
+		    <div class="ml-auto">
+		      <a href="#" class="btn btn-primary regBtn">글쓰기</a>
+		    </div>
+		  </div>
+		</div>
+    
+	    <nav aria-label="Page navigation example">
+	      <ul class="pagination justify-content-center">
+	        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+	        <li class="page-item"><a class="page-link" href="#">1</a></li>
+	        <li class="page-item"><a class="page-link" href="#">2</a></li>
+	        <li class="page-item"><a class="page-link" href="#">3</a></li>
+	        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+	      </ul>
+	    </nav>
+  	</div>
+</section>
 
 
   </main><!-- End #main -->

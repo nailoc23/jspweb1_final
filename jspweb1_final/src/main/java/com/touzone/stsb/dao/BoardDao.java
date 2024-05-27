@@ -114,5 +114,37 @@ public class BoardDao extends DBManager {
 		return result;
 		
 	}
+	
+	public int updateBoard(BoardVo boardVo) {
+		int result=0; // 삽입결과 1이상: 성공
+		
+		conn = getConnect();
+		
+		try {
+			StringBuffer sb = new StringBuffer();
+			sb.append("UPDATE boards SET \n"
+					+ "subject=?, \n"
+					+ "name=?, email=?, \n"
+					+ "content=? \n"
+			        + " WHERE num=?" );
+			String sql = sb.toString();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,  boardVo.getSubject());
+			pstmt.setString(2,  boardVo.getName());
+			
+			pstmt.setString(3,  boardVo.getEmail());
+			pstmt.setString(4,  boardVo.getContent());
+			
+			pstmt.setInt(5,  boardVo.getNum());
+			
+			result = pstmt.executeUpdate();
+		}catch(SQLException se) {
+			System.out.println("updateBook Error:" + se.getMessage() );
+		}finally {
+			DBClose();
+		}
+		
+		return result;
+	}
 
 }

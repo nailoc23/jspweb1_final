@@ -57,7 +57,7 @@
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link   scrollto" href="#portfolio">Smart Shop</a></li>
           <li><a class="nav-link scrollto" href="#team">Consultant</a></li>
-          <li class="dropdown"><a href="#"><span>Customer Center</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="boardlist.jsp"><span>Customer Center</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="boardlist.jsp">공지사항</a></li>         
               <li><a href="#">News</a></li>
