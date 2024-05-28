@@ -106,7 +106,7 @@ public class BoardDao extends DBManager {
 				result.setHit( rs.getInt("hit"));
 			}
 		}catch(SQLException se) {
-			System.out.println("selectBookById Error:");
+			System.out.println("selectBoardById Error:");
 		}finally { // 이게 빠지면 첫번째 디비접속성공 그다음은 에러가 난다
 			DBClose();
 		}
@@ -139,7 +139,25 @@ public class BoardDao extends DBManager {
 			
 			result = pstmt.executeUpdate();
 		}catch(SQLException se) {
-			System.out.println("updateBook Error:" + se.getMessage() );
+			System.out.println("updateBoard Error:" + se.getMessage() );
+		}finally {
+			DBClose();
+		}
+		
+		return result;
+	}
+	
+	public int deleteBoardById(String num) {
+		int result=0;
+		
+		conn = getConnect();
+		
+		try {
+			String sql="DELETE FROM boards WHERE num="+num;
+			stmt = conn.createStatement();
+			result = stmt.executeUpdate(sql);
+		}catch(SQLException se) {
+			System.out.println("deleteBoardById Error:");
 		}finally {
 			DBClose();
 		}
