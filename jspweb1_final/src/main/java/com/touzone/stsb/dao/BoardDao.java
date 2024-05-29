@@ -23,15 +23,18 @@ public class BoardDao extends DBManager {
 	 * 게시판 목록들을 가져오기
 	 * @return
 	 */
-	public List<BoardVo> selectBoardList() {
+	public List<BoardVo> selectBoardList(String searchKey) {
 		
 		List<BoardVo> list = new ArrayList<BoardVo>();
 		
 		conn=getConnect();
 		
 		try {
-			stmt = conn.createStatement();
-			String sql = "SELECT num,subject, name, DATE_FORMAT(regdate, '%Y-%m-%d') as regdate, hit FROM BOARDS ORDER BY num DESC";
+			//stmt = conn.createStatement();
+			String sql = "SELECT num,subject, name, DATE_FORMAT(regdate, '%Y-%m-%d') as regdate, hit FROM BOARDS WHERE subject like ? ORDER BY num DESC";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+searchKey+"%");
 			// rs : ResultSet 
 			rs = stmt.executeQuery(sql);
 			while(rs.next()) {
