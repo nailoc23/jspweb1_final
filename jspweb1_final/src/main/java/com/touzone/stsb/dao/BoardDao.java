@@ -32,11 +32,11 @@ public class BoardDao extends DBManager {
 		try {
 			//stmt = conn.createStatement();
 			String sql = "SELECT num,subject, name, DATE_FORMAT(regdate, '%Y-%m-%d') as regdate, hit FROM BOARDS WHERE subject like ? ORDER BY num DESC";
-			
+			// 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+searchKey+"%");
 			// rs : ResultSet 
-			rs = stmt.executeQuery(sql);
+			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				BoardVo tempVo = new BoardVo();
 				tempVo.setNum(rs.getInt("num"));
@@ -69,13 +69,14 @@ public class BoardDao extends DBManager {
 		try {
 			StringBuffer sb = new StringBuffer();
 			sb.append("INSERT INTO boards \n"
-					+ "(num, botype, group_num, name, subject, content, regdate) values \n"
-					+ "(( SELECT MAX(num)+1 FROM boards as num ), 'notice', num, ?, ?, ?,now() )");
+					+ "(num, botype, group_num, name, subject, content, email, regdate) values \n"
+					+ "(( SELECT MAX(num)+1 FROM boards as num ), 'notice', num, ?, ?, ?,?,now() )");
 			String sql = sb.toString();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, boardVo.getName());
 			pstmt.setString(2, boardVo.getSubject());
 			pstmt.setString(3, boardVo.getContent());
+			pstmt.setString(4, boardVo.getEmail());
 			result = pstmt.executeUpdate();
 		}catch(SQLException se) {
 			System.out.println("insertBoard error:" + se.getMessage());

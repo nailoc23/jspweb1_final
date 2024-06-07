@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 
 
-<%@ page import="com.touzone.stsb.dao.*" %> 
-<%@ page import="com.touzone.stsb.vo.*" %> 
-<%@ page import="java.util.List" %>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,29 +40,6 @@
   ======================================================== -->
 </head>
 
- <% 
-   // DAO를 생성해 DB에 연결
-   BoardDao boarddao = BoardDao.getInstance(); 
-   
-   // 사용자가 입력한 검색 조건을 Map에 저장
-   //Map<String, Object> parm = new HashMap<String, Object>();
-   
-   //String searchField = request.getParameter("searchField");
-   //String searchWord = request.getParameter("searchWord");
-   
-   //if(searchWord != null) {
-   //   param.put("searchField", searchField);
-   //   param.put("searchWord", searchWord);
-   //}
-   
-   String searchKey = request.getParameter("searchKey");
-   if(searchKey==null) { searchKey = ""; }
-   System.out.println("검색어="+ searchKey);   
-   // 제목검색
-   List<BoardVo> boardLists = boarddao.selectBoardList(searchKey);
-
-   System.out.println("총수="+boardLists.size());
-%>   
 <body>
 
   <!-- ======= Header ======= -->
@@ -110,101 +83,60 @@
     </div>
   </header><!-- End Header -->
 
-  <main id="main">
+<main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
-
-        <ol>
-          <li><a href="index.html">Customer Center</a></li>
-          <li>공지사항</li>
-        </ol>
-        <h2>공지사항</h2>
-
-      </div>
-    </section><!-- End Breadcrumbs -->
-
-    <section class="inner-page">
-  	<div class="container">
-    <h2>공지사항 목록</h2>
-    
-    <!-- 검색창 -->
-    <div class="input-group mb-3">
-       <input type="text" class="form-control" placeholder="검색어 입력" value="" id="searchWord">
-       <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="searchBtn">검색</button>
-       </div>
+  <!-- ======= Breadcrumbs ======= -->
+  <section id="breadcrumbs" class="breadcrumbs">
+    <div class="container">
+      <ol>
+        <li><a href="index.html">Customer Center</a></li>
+        <li><a href="boardlist.jsp">공지사항</a></li>
+        <li>글쓰기</li>
+      </ol>
+      <h2>공지사항</h2>
     </div>
-    
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>제목</th>
-            <th>작성자</th>
-            <th>작성일</th>
-            <th>조회수</th>
-          </tr>
-        </thead>
-        <tbody>
-        <%
-  		if (boardLists.isEmpty()) {
-      	// 게시물이 하나도 없을 때
-		%>
-		<tr>
-			<td colspan="5" align="center">게시물이 없습니다
-			</td>
-		</tr>
-	 	<%
-	    }else{
-	    	// 게시물이 있을 때
-	        
-	        for (BoardVo boardvo : boardLists)
-	        {
-	           //virtualNum = totalCount--; // 전체 게시물 수에서 시작해서 1씩 감소
+  </section><!-- End Breadcrumbs -->
 
-		%>        
-	        <tr>
-            <td><%= boardvo.getNum() %></td>
-            <td><a href="boardview.jsp?num=<%= boardvo.getNum() %>"><%= boardvo.getSubject() %></a></td>
-            <td><%= boardvo.getName() %></td>
-            <td><%= boardvo.getRegdate() %></td>
-            <td><%= boardvo.getHit() %></td>
-          </tr>
-          
-        <%
-	        }
-	    }
-        %>
-          <!-- 추가적인 게시글 행을 이곳에 추가합니다 -->
-        </tbody>
-      </table>
+  <section class="inner-page">
+    <div class="container">
+      <h2>글쓰기</h2>
+
+      <form action="boardregpro.jsp" method="post"> <!-- enctype="multipart/form-data" -->
+        <div class="form-group">
+          <label for="name">작성자</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="작성자 이름" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">이메일</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="이메일">
+        </div>
+
+        <div class="form-group">
+          <label for="subject">제목</label>
+          <input type="text" class="form-control" id="subject" name="subject" placeholder="제목" required>
+        </div>
+
+        <div class="form-group">
+          <label for="content">내용</label>
+          <textarea class="form-control" id="content" name="content" rows="5" placeholder="내용을 입력하세요" required></textarea>
+        </div>
+
+		<!-- 
+        <div class="form-group">
+          <label for="file">첨부파일</label>
+          <input type="file" class="form-control-file" id="file" name="file">
+        </div>
+ 		-->
+        <div class="text-right mt-3">
+          <button type="submit" class="btn btn-primary">작성하기</button>
+          <a href="boardlist.jsp" class="btn btn-secondary">취소</a>
+        </div>
+      </form>
     </div>
-    
-	    <div class="container mt-3">
-		  <div class="input-group mb-3">
-		    <div class="ml-auto">
-		      <a href="boardregform.jsp" class="btn btn-primary regBtn">글쓰기</a>
-		    </div>
-		  </div>
-		</div>
-    
-	    <nav aria-label="Page navigation example">
-	      <ul class="pagination justify-content-center">
-	        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-	        <li class="page-item"><a class="page-link" href="#">1</a></li>
-	        <li class="page-item"><a class="page-link" href="#">2</a></li>
-	        <li class="page-item"><a class="page-link" href="#">3</a></li>
-	        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-	      </ul>
-	    </nav>
-  	</div>
-</section>
+  </section>
 
-
-  </main><!-- End #main -->
+</main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
