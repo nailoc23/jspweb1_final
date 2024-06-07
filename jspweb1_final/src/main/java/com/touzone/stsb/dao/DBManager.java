@@ -11,7 +11,7 @@ import java.sql.Statement;
 public class DBManager {
 	
 	// 접속 정보 작성
-	static String url = "jdbc:mysql://192.168.0.197:3306/javadb3";
+	static String url = "jdbc:mysql://192.168.0.197:3306/javadb3"; // 
 	static String user = "team3";
 	static String password = "123456";
 	

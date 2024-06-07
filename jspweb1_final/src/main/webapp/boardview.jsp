@@ -127,7 +127,8 @@
 
       <div class="text-right">
         <a href="boardlist.jsp" class="btn btn-secondary">목록으로</a>
-        <a href="boardmodform.jsp" class="btn btn-secondary">수정</a>
+        <a href="boardmodform.jsp?num=<%= boardVo.getNum() %>" class="btn btn-secondary">수정</a>
+        <a href="boardremve.jsp?num=<%= boardVo.getNum() %>" class="btn btn-secondary">삭제</a>
       </div>
 
     </div>

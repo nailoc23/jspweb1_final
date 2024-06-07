@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
 
+<%@ page import="com.touzone.stsb.dao.*" %> 
+<%@ page import="com.touzone.stsb.vo.*" %> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -83,6 +85,16 @@
     </div>
   </header><!-- End Header -->
 
+<%
+	String num = request.getParameter("num");
+	//DAO를 생성해 DB에 연결
+	BoardDao boarddao = BoardDao.getInstance(); 
+	// boarddao.updateHit(num); // 조회수 증가
+	// BoardDao boarddao = boarddao.selectView(num); // 게시물 가져오기
+	BoardVo boardVo = boarddao.selectBoardById(Integer.valueOf(num));
+
+  %>
+  
 <main id="main">
 
   <!-- ======= Breadcrumbs ======= -->
@@ -101,25 +113,26 @@
     <div class="container">
       <h2>글수정</h2>
 
-      <form action="boardregpro.jsp" method="post"> <!-- enctype="multipart/form-data" -->
+      <form action="boardmodpro.jsp" method="post"> <!-- enctype="multipart/form-data" -->
+        <input type="hidden" name="num" value="<%= boardVo.getNum() %>">
         <div class="form-group">
           <label for="name">작성자</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="작성자 이름" required>
+          <input type="text" class="form-control" id="name" name="name" value="<%= boardVo.getName() %>" placeholder="작성자 이름" required>
         </div>
 
         <div class="form-group">
           <label for="email">이메일</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="이메일">
+          <input type="email" class="form-control" id="email" name="email" value="<%= boardVo.getEmail() %>" placeholder="이메일">
         </div>
 
         <div class="form-group">
           <label for="subject">제목</label>
-          <input type="text" class="form-control" id="subject" name="subject" placeholder="제목" required>
+          <input type="text" class="form-control" id="subject" name="subject" value="<%= boardVo.getSubject() %>"" placeholder="제목" required>
         </div>
 
         <div class="form-group">
           <label for="content">내용</label>
-          <textarea class="form-control" id="content" name="content" rows="5" placeholder="내용을 입력하세요" required></textarea>
+          <textarea class="form-control" id="content" name="content" rows="5" placeholder="내용을 입력하세요" required><%= boardVo.getContent() %></textarea>
         </div>
 
 		<!-- 
@@ -130,7 +143,7 @@
  		-->
         <div class="text-right mt-3">
           <button type="submit" class="btn btn-primary">작성하기</button>
-          <a href="boardlist.jsp" class="btn btn-secondary">취소</a>
+          <a href="boardview.jsp?num=<%= num %>" class="btn btn-secondary">취소</a>
         </div>
       </form>
     </div>
