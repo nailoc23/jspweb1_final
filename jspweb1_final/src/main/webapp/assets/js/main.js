@@ -107,6 +107,19 @@
     window.addEventListener('load', toggleBacktotop)
     onscroll(document, toggleBacktotop)
   }
+  
+  let chatpopup = select('.chat-popup')
+  if (chatpopup) {
+    const toggleChatpopup = () => {
+      if (window.scrollY > 100) {
+        chatpopup.classList.add('active')
+      } else {
+        chatpopup.classList.remove('active')
+      }
+    }
+    window.addEventListener('load', toggleChatpopup)
+    onscroll(document, toggleChatpopup)
+  }
 
   /**
    * Mobile nav toggle

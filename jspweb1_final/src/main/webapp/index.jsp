@@ -152,20 +152,20 @@
         <div class="row content">
           <div class="col-lg-6">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              IoT와 AI 솔루션, 빅데이터 분석을 제공하는 선도적인 IT 서비스 기업
             </p>
             <ul>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-              <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+              <li><i class="ri-check-double-line"></i> 통합 플랫폼: IoT, AI, 빅데이터 분석을 하나의 플랫폼에서 통합적으로 제공하여 사용자의 편의성을 높임.</li>
+              <li><i class="ri-check-double-line"></i> 강력한 인프라: 안정적이고 확장 가능한 클라우드 인프라를 기반으로 대용량 데이터를 처리하고 분석할 수 있는 능력 보유.</li>
+              <li><i class="ri-check-double-line"></i> 고급 AI 기능: 최신 AI 기술을 활용한 맞춤형 솔루션 제공으로 다양한 산업 분야에서 혁신적인 데이터 활용 가능.</li>
             </ul>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum.
+              IoT와 AI 솔루션, 빅데이터 분석을 제공하는 선도적인 IT 서비스 기업은 미래에 데이터 중심의 혁신을 이끌어 나갈 것입니다. 
+              다양한 산업에서 데이터 분석과 AI 기술을 활용해 효율성을 극대화하고, 스마트한 비즈니스 환경을 조성할 것입니다. 
+              지속적인 기술 개발과 인프라 확장으로 글로벌 시장에서도 경쟁력을 강화할 계획입니다. 또한, 고객 맞춤형 솔루션을 제공하여 
+              다양한 산업 분야의 디지털 전환을 지원하고, 새로운 성장 동력을 창출할 것입니다.
             </p>
             <a href="#" class="btn-learn-more">Learn More</a>
           </div>
@@ -481,8 +481,8 @@
             <div class="member d-flex align-items-start">
               <div class="pic"><img src="assets/img/team/team-1.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Walter White</h4>
-                <span>Chief Executive Officer</span>
+                <h4>강대웅 전문연구원</h4>
+                <span>영상 인식 전문가</span>
                 <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
@@ -498,8 +498,8 @@
             <div class="member d-flex align-items-start">
               <div class="pic"><img src="assets/img/team/team-2.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Product Manager</span>
+                <h4>송선미 전문연구원</h4>
+                <span>빅데이터 분석 전문가</span>
                 <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
@@ -515,8 +515,8 @@
             <div class="member d-flex align-items-start">
               <div class="pic"><img src="assets/img/team/team-3.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>CTO</span>
+                <h4>길훈섭 전문연구원</h4>
+                <span>PLC 제어 전문가</span>
                 <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
@@ -532,8 +532,8 @@
             <div class="member d-flex align-items-start">
               <div class="pic"><img src="assets/img/team/team-4.jpg" class="img-fluid" alt=""></div>
               <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Accountant</span>
+                <h4>엘리자베스 전문연구원</h4>
+                <span>머신러닝 솔루션 전문가</span>
                 <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
                 <div class="social">
                   <a href=""><i class="ri-twitter-fill"></i></a>
@@ -830,7 +830,8 @@
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-chat"></i></a>
+  <a href="#" class="chat-popup d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>
