@@ -62,10 +62,23 @@
    String searchKey = request.getParameter("searchKey");
    if(searchKey==null) { searchKey = ""; }
    System.out.println("검색어="+ searchKey);   
+   
+   String strPage = request.getParameter("page");
+   int pnum = 0;
+   if(strPage==null) { 
+	   pnum=1;
+   }else{
+	   pnum = Integer.valueOf(strPage);
+   }
+   System.out.println("검색어="+ searchKey);  
    // 제목검색
-   List<BoardVo> boardLists = boarddao.selectBoardList(searchKey);
+   List<BoardVo> boardLists = boarddao.selectBoardList(searchKey, pnum);
 
-   System.out.println("총수="+boardLists.size());
+   int pageTotal = boarddao.selectBoardTotal();
+   int boardPerPage = 10; // 페이지 당 10개
+   int pageCnt = (pageTotal % boardPerPage==0) ? (pageTotal / boardPerPage) : (pageTotal / boardPerPage)+1;
+   
+   System.out.println("총수="+pageCnt );
 %>   
 <body>
 
@@ -193,11 +206,17 @@
     
 	    <nav aria-label="Page navigation example">
 	      <ul class="pagination justify-content-center">
-	        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-	        <li class="page-item"><a class="page-link" href="#">1</a></li>
-	        <li class="page-item"><a class="page-link" href="#">2</a></li>
-	        <li class="page-item"><a class="page-link" href="#">3</a></li>
-	        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+	        <li class="page-item"><a class="page-link" href="boardlist.jsp?page=1">Previous</a></li>
+	        <%
+	        for(int p=1; p<=pageCnt; p++) {
+	        %>
+	        
+	        <li class="page-item"><a class="page-link" href="boardlist.jsp?page=<%=p%>"><%=p%></a></li>
+	              
+	        <%
+	        }
+	        %>
+	        <li class="page-item"><a class="page-link" href="boardlist.jsp?page=<%=pageCnt%>">Next</a></li>
 	      </ul>
 	    </nav>
   	</div>

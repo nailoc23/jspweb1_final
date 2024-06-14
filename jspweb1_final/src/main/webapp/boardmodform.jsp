@@ -142,7 +142,7 @@
         </div>
  		-->
         <div class="text-right mt-3">
-          <button type="submit" class="btn btn-primary">작성하기</button>
+          <button type="submit" class="btn btn-primary">수정하기</button>
           <a href="boardview.jsp?num=<%= num %>" class="btn btn-secondary">취소</a>
         </div>
       </form>

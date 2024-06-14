@@ -20,10 +20,36 @@ public class BoardDao extends DBManager {
 	}
 	
 	/**
+	 * 게시판 총갯수 가져오기
+	 */
+	public int selectBoardTotal() {
+		int result= 0;
+		
+		conn=getConnect();
+		
+		try {
+			
+			stmt = conn.createStatement();
+			String sql = "SELECT count(*) as cnt FROM BOARDS";
+			// rs : ResultSet 
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {				
+				result = rs.getInt("cnt");	
+			}
+		}catch(SQLException se) {
+			System.out.println("selectBoardTotal error:" + se.getMessage() );
+		}finally {
+			DBClose();
+		}
+				
+		return result;
+	}
+	
+	/**
 	 * 게시판 목록들을 가져오기
 	 * @return
 	 */
-	public List<BoardVo> selectBoardList(String searchKey) {
+	public List<BoardVo> selectBoardList(String searchKey, int pnum) {
 		
 		List<BoardVo> list = new ArrayList<BoardVo>();
 		
@@ -31,10 +57,11 @@ public class BoardDao extends DBManager {
 		
 		try {
 			//stmt = conn.createStatement();
-			String sql = "SELECT num,subject, name, DATE_FORMAT(regdate, '%Y-%m-%d') as regdate, hit FROM BOARDS WHERE subject like ? ORDER BY num DESC";
+			String sql = "SELECT num,subject, name, DATE_FORMAT(regdate, '%Y-%m-%d') as regdate, hit FROM BOARDS WHERE subject like ? ORDER BY num DESC limit ?,10";
 			// 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+searchKey+"%");
+			pstmt.setInt(2, (pnum-1)*10);
 			// rs : ResultSet 
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
