@@ -21,7 +21,8 @@
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
@@ -30,6 +31,45 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  
+  <style>
+    .chat-box {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .message {
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    .message.sent {
+      background-color: #d1e7dd;
+      text-align: right;
+    }
+
+    .message.received {
+      background-color: #f8d7da;
+      text-align: left;
+    }
+
+    .chat-input {
+      position: relative;
+    }
+
+    .chat-input input {
+      width: calc(100% - 70px);
+    }
+
+    .chat-input button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+    }
+  </style>
+  
 
   <!-- =======================================================
   * Template Name: Arsha
@@ -55,7 +95,7 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link   scrollto" href="#portfolio">Smart Shop</a></li>
+          <li><a class="nav-link scrollto" href="#portfolio">Smart Shop</a></li>
           <li><a class="nav-link scrollto" href="#team">Consultant</a></li>
           <li class="dropdown"><a href="boardlist.jsp"><span>Customer Center</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -830,20 +870,102 @@
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-chat"></i></a>
-  <a href="#" class="chat-popup d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="chat-popup d-flex align-items-center justify-content-center"><i class="bi bi-chat"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  
+  <!-- The Modal -->
+  <div class="modal fade" id="chatModal" tabindex="-1" aria-labelledby="chatModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title" id="chatModalLabel">Chat</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="chat-box" id="chatBox">
+            <div class="message received">
+              안녕하세요 무엇을 도와드릴까요?
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <div class="chat-input w-100">
+            <input type="text" id="chatInput" class="form-control" placeholder="Type your message...">
+            <button class="btn btn-primary" id="sendBtn">Send</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  
+  <script>
+  $(document).ready(function() {
+      // Open chat modal on button click using jQuery
+      //$('#openChatBtn').click(function() {
+      //  $('#chatModal').modal('show');
+      //});
+
+      $('#sendBtn').click(function() {
+        var message = $('#chatInput').val().trim();
+
+        if (message) {
+          var messageDiv = $('<div>').addClass('message sent').text(message);
+          $('#chatBox').append(messageDiv);
+          $('#chatInput').val('');
+
+          // Scroll to the bottom of the chat box
+          $('#chatBox').scrollTop($('#chatBox')[0].scrollHeight);
+        }
+      });
+
+      $('#chatInput').keypress(function(e) {
+        if (e.which == 13) {
+          $('#sendBtn').click();
+        }
+      });
+    });
+
+    function sendMessage() {
+      const chatBox = document.getElementById('chatBox');
+      const chatInput = document.getElementById('chatInput');
+      const message = chatInput.value.trim();
+
+      if (message) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', 'sent');
+        messageDiv.textContent = message;
+
+        chatBox.appendChild(messageDiv);
+        chatInput.value = '';
+
+        // Scroll to the bottom of the chat box
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+    }
+  </script>
 
 </body>
 

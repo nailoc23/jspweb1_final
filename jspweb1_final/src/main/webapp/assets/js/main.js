@@ -120,6 +120,13 @@
     window.addEventListener('load', toggleChatpopup)
     onscroll(document, toggleChatpopup)
   }
+  
+  /**
+   * 추가
+   */
+  on('click', '.chat-popup', function(e) {
+	  $('#chatModal').modal('show');
+  })
 
   /**
    * Mobile nav toggle
