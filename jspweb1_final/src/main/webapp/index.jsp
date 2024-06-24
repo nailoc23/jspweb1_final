@@ -514,7 +514,7 @@
 
         <div class="section-title">
           <h2>CONSULTANT</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>빅데이터와 IoT 솔루션에 관한 전문 연구원들의 상담을 받아보세요. 맞춤형 솔루션을 통해 비즈니스 혁신을 도와드립니다. 문의하시면 최상의 서비스를 제공해드리겠습니다.</p>
         </div>
 
         <div class="row">
